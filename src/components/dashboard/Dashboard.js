@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 // import NewQuestions from "./NewQuestions";
 
 export default class Dashboard extends Component {
-
 	render() {
 		return (
 			<React.Fragment>

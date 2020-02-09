@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 
 import React, { Component } from 'react'
 
-export default class DashHome extends Component {
+export default class DashNav extends Component {
 	componentDidMount() {
 		console.log(this.props.location.state);
 	}
@@ -35,13 +35,6 @@ export default class DashHome extends Component {
 	}
 }
 
-
-// const DashHome = ({ location, userId }) => {
-// 	console.log(userId, location.state);
-
-// }
-
-// export default DashHome;
 
 
 

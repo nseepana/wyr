@@ -7,7 +7,7 @@ import LeadBoard from "./components/dashboard/LeadBoard";
 import NewQuestions from "./components/dashboard/NewQuestions";
 
 import { Router, Link } from "@reach/router";
-import DashHome from './components/dashboard/DashHome';
+import DashNav from './components/dashboard/DashNav';
 // import DashHome from './components/dashboard/DashHome';
 // import DashHome from './components/dashboard/DashHome';
 
@@ -20,12 +20,12 @@ function App() {
         <Router>
           <Login path="/" />
           {/* expacted path have to specified */}
-          <DashHome path="dashboard/:userId/*"></DashHome>
+          <DashNav path="dashboard/:userId/*"></DashNav>
         </Router>
       </nav>
       <main id='main-block'>
         <Router>
-          {/* sub path have to specified */}
+          {/* sub paths specify here */}
           <Dashboard path="dashboard/:userId">
             <Home default path="home" />
             <NewQuestions path="newquestion" />
