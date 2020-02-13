@@ -1,5 +1,7 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import './component.scss';
+import './card.scss';
 import Dashboard from './components/dashboard';
 import Login from './components/login';
 import Home from "./components/dashboard/Home";
@@ -12,16 +14,16 @@ import MainNav from './components/dashboard/MainNav';
 
 function App() {
   return (
-    <React.Fragment>
+    <div className="wrapper">
       <header className="header">
         <nav>
           <Link className="brand" to="/">Would you rather</Link>
           <Router>
-            <MainNav path="dashboard/:userId/*" ></MainNav>
+            <MainNav path="dashboard/:userId/*"></MainNav>
           </Router>
         </nav>
       </header>
-      <main>
+      <main className="main">
         <div className="">
           <Router>
             <Login path="login" />
@@ -33,7 +35,10 @@ function App() {
           </Router>
         </div>
       </main>
-    </React.Fragment>
+      {/* <footer className="footer">
+        Naresh
+      </footer> */}
+    </div>
   );
 }
 

@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
+import ProfileCard from './ProfileCard'
+import ScoreCard from './ScoreCard'
 
 export default class LeadBoard extends Component {
 	render() {
 		return (
-			<div>
-				Lead Board
-			</div>
+			<ul>
+				<li>
+					<ProfileCard></ProfileCard>
+					<ScoreCard></ScoreCard>
+				</li>
+			</ul>
+
 		)
 	}
 }

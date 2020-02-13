@@ -5,7 +5,7 @@ import React from 'react';
 const MainNav = ({ userId }) => {
 	return (
 		<React.Fragment >
-			<ul className="left">
+			<ul className="navigation">
 				<li>
 					{/* relative url */}
 					<Link to='home' >{i18n.t('home')}</Link>
@@ -20,9 +20,8 @@ const MainNav = ({ userId }) => {
 					{/* relative url */}
 					<Link to='leadboard'>{i18n.t('leaderboard')}</Link>
 				</li>
-			</ul>
-			<ul className="right">
-				<li>Hi, {userId}!</li>
+
+				<li><div>Hi, {userId}!</div></li>
 				<li><Link to="/login">Logout</Link></li>
 			</ul>
 		</React.Fragment>

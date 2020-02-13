@@ -1,0 +1,26 @@
+button {
+    padding: 0.6em;
+    height: auto;
+    background-color: whitesmoke;
+    font-size: medium;
+}
+
+select {
+    padding: 1em;
+    font-size: medium;
+}
+
+input[type='text'] {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 4px;
+    box-sizing: border-box;
+}
+
+p {
+    text-align: center;
+}
+
+label {
+    color: gray;
+}

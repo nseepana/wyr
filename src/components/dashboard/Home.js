@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Card from './Card';
+import ProfileCard from './ProfileCard';
 
 export default class Home extends Component {
 	render() {
@@ -9,7 +9,7 @@ export default class Home extends Component {
 				<div className="btn-group">
 					<button>Answered questions</button><button>Unanswered questions</button>
 				</div>
-				<Card></Card>
+				<ProfileCard></ProfileCard>
 			</React.Fragment>
 		)
 

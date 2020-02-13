@@ -1,0 +1,62 @@
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    font-size: medium;
+    color: #555;
+}
+
+.header,
+footer {
+    flex: 1 100%;
+}
+
+ul li {
+    list-style-type: none;
+    margin: 1em;
+}
+
+.navigation {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    margin: 0;
+    border-bottom: 2px solid #d0d0d0;
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.form-footer {
+    margin: 1rem 0rem 0rem 0rem;
+}
+
+.brand {
+    font-size: x-large;
+    justify-content: center;
+}
+
+main {
+    margin-top: 1rem;
+}
+
+fieldset {
+    border: 1px solid #d0d0d0;
+    font-size: large;
+}
+
+hr {
+    border: 1px solid #d0d0d0;
+}
+
+@media all and (min-width: 600px) {}
+
+@media all and (min-width: 800px) {}
