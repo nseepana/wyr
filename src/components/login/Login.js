@@ -22,15 +22,22 @@ export default class Login extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<img alt="logo"></img>
-				<select value={this.state.value} onChange={this.handleChange}>
-					<option value="">Select user</option>
-					<option value="naresh">Naresh</option>
-					<option value="harsha">Harsha</option>
-				</select>
-				<input type="submit" value="Login" disabled={!this.state.value} />
-			</form>
+			<div>
+				<form className="pure-form pure-form-stacked" onSubmit={this.handleSubmit}>
+					<fieldset>
+						<legend>Select user</legend>
+						<div>
+							<select className="" value={this.state.value} onChange={this.handleChange}>
+								<option value="naresh">Naresh</option>
+								<option value="harsha">Harsha</option>
+							</select>
+						</div>
+						<div>
+							<button className="" type="submit" disabled={!this.state.value}>Login</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
 		)
 	}
 }

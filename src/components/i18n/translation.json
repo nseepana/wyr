@@ -1,0 +1,10 @@
+{
+    "en": {
+        "translation": {
+            "newquestion": "New Question",
+            "leaderboard": "Leader Board",
+            "home": "Home",
+            "logout": "Logout"
+        }
+    }
+}

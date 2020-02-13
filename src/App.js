@@ -7,33 +7,33 @@ import LeadBoard from "./components/dashboard/LeadBoard";
 import NewQuestions from "./components/dashboard/NewQuestions";
 
 import { Router, Link } from "@reach/router";
-import DashNav from './components/dashboard/DashNav';
-// import DashHome from './components/dashboard/DashHome';
-// import DashHome from './components/dashboard/DashHome';
+import MainNav from './components/dashboard/MainNav';
+
 
 function App() {
   return (
-
-    <div className="container">
-      <nav className="navbar navbar-expand-lg navbar-light">
-        <Link className="navbar-brand" to="home">Would you rather</Link>
-        <Router>
-          <Login path="/" />
-          {/* expacted path have to specified */}
-          <DashNav path="dashboard/:userId/*"></DashNav>
-        </Router>
-      </nav>
-      <main id='main-block'>
-        <Router>
-          {/* sub paths specify here */}
-          <Dashboard path="dashboard/:userId">
-            <Home default path="home" />
-            <NewQuestions path="newquestion" />
-            <LeadBoard path="leadboard" />
-          </Dashboard>
-        </Router>
+    <React.Fragment>
+      <header className="header">
+        <nav>
+          <Link className="brand" to="/">Would you rather</Link>
+          <Router>
+            <MainNav path="dashboard/:userId/*" ></MainNav>
+          </Router>
+        </nav>
+      </header>
+      <main>
+        <div className="">
+          <Router>
+            <Login path="login" />
+            <Dashboard path="dashboard/:userId">
+              <Home default path="home" />
+              <NewQuestions path="newquestion" />
+              <LeadBoard path="leadboard" />
+            </Dashboard>
+          </Router>
+        </div>
       </main>
-    </div>
+    </React.Fragment>
   );
 }
 
