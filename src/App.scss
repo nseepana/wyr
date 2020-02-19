@@ -60,3 +60,13 @@ hr {
 @media all and (min-width: 600px) {}
 
 @media all and (min-width: 800px) {}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100vh;
+    margin: 0;
+}
