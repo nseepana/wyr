@@ -7,12 +7,14 @@ import React, { Component } from 'react';
 // import LeadBoard from "./LeadBoard";
 // import NewQuestions from "./NewQuestions";
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
 	render() {
+		const { children } = this.props;
 		return (
 			<React.Fragment>
-				{this.props.children}
+				{children}
 			</React.Fragment>
 		)
 	}
 }
+export default Dashboard;

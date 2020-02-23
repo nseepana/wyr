@@ -3,8 +3,9 @@ const initialState = {
 }
 
 export const auth = (state = initialState, { type, payload }) => {
+	console.log(state, type, payload);
 	switch (type) {
-		case 'LOGGED_IN':
+		case 'USER_SELECTED':
 			return { ...state, ...payload }
 		case 'GET_USERS':
 			return { ...state, ...payload }

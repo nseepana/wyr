@@ -3,38 +3,45 @@ import React, { Component } from 'react'
 // import { getUsers } from '../../utils/api';
 
 export default class Login extends Component {
-
 	state = {
 		userId: ""
 	}
 
+	componentDidMount() {
+		console.log(this.props)
+		// this.props.onUserSelect({});
+
+
+	}
+
 	handleChange = (event) => {
-		console.log(event.target.value)
+		// console.log(this.props)
 		this.setState({ userId: event.target.value });
 	}
 
-	handleSubmit = (e) => {
+	handleLogin = (e) => {
 		e.preventDefault();
 		let { userId } = this.state;
-		this.props.selectedUser(userId);
 		if (userId) {
+			this.props.onUserSelect(this.props.users[userId]);
 			this.props.navigate(`/dashboard`);
 		}
 	}
 
 	render() {
 		const { userId } = this.state;
-		const alink = `/assets/images/${userId}.jpg`;
+		const { users, userIds } = this.props;
+		const selectedUser = users[userId] || {};
 		return (
 			<div>
-				<form className="pure-form pure-form-stacked" onSubmit={this.handleSubmit}>
+				<form className="pure-form pure-form-stacked" onSubmit={this.handleLogin}>
 					<fieldset>
 						<legend>Select user</legend>
 						<div>
-							<div>{userId ? (<img alt="selected user" src={alink} />) : ('')}</div>
+							<div>{userId ? (<img alt="selected user" src={selectedUser.avatarURL} />) : ('')}</div>
 							<select className="" value={userId} onChange={this.handleChange}>
 								<option key='selectUser' value=''>Select user</option>
-								{this.props.users.map(user => <option key={user} value={user}>{user}</option>)}
+								{userIds.map(userId => <option key={userId} value={userId}>{users[userId].name}</option>)}
 							</select>
 						</div>
 						<div>
