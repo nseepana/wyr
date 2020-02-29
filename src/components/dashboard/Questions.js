@@ -1,5 +1,24 @@
 import React, { Component } from 'react'
-import ProfileCard from './ProfileCard';
+import { Link } from '@reach/router';
+
+
+const ShowQuestion = (props) => {
+	const { question: { optionOne = {}, id } = {}, user = {} } = props;
+	return (<div className="card">
+		<div className="card-header">{user.name}</div>
+		<div className="card-profile">
+			<img src={user.avatarURL} alt="prof"></img>
+		</div>
+		<div className="card-details">
+			<h3>Would You Rather</h3>
+			<p>{optionOne.text.substr(0, 20)}...</p>
+
+			<div className="card-details-footer">
+				<Link className="active" to={id}>View Poll</Link>
+			</div>
+		</div>
+	</div>)
+};
 
 class Questions extends Component {
 	state = {
@@ -62,7 +81,7 @@ class Questions extends Component {
 					{selectedQuestions.length ?
 						selectedQuestions.map(({ questionId, answered }) => {
 							const question = questions[questionId] || {};
-							return <ProfileCard answered={answered} key={question.id} question={question} user={users[question.author]}></ProfileCard>
+							return <ShowQuestion answered={answered} key={question.id} question={question} user={users[question.author]}></ShowQuestion>
 						}) : <p>loading...</p>}
 				</div>
 			</React.Fragment>
