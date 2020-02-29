@@ -8,14 +8,12 @@ export default class Login extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props)
-		// this.props.onUserSelect({});
+
 
 
 	}
 
 	handleChange = (event) => {
-		// console.log(this.props)
 		this.setState({ userId: event.target.value });
 	}
 
@@ -33,19 +31,19 @@ export default class Login extends Component {
 		const { users, userIds } = this.props;
 		const selectedUser = users[userId] || {};
 		return (
-			<div>
+			<div className="login-container">
 				<form className="pure-form pure-form-stacked" onSubmit={this.handleLogin}>
 					<fieldset>
-						<legend>Select user</legend>
-						<div>
+						<legend>Welcome, Signin to continue.</legend>
+						<div className="login-group">
 							<div>{userId ? (<img alt="selected user" src={selectedUser.avatarURL} />) : ('')}</div>
 							<select className="" value={userId} onChange={this.handleChange}>
 								<option key='selectUser' value=''>Select user</option>
 								{userIds.map(userId => <option key={userId} value={userId}>{users[userId].name}</option>)}
 							</select>
 						</div>
-						<div>
-							<button className="" type="submit" disabled={!userId}>Login</button>
+						<div className="login-footer">
+							<button className="active" type="submit" disabled={!userId}>Signin</button>
 						</div>
 					</fieldset>
 				</form>

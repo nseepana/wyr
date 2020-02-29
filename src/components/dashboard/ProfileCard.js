@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-
-
+import { Link } from '@reach/router';
 export default class ProfileCard extends Component {
 
-
 	render() {
-		const { question, user = {} } = this.props;
-		console.log(this.props);
+		const { question: { optionOne = {}, id } = {}, user = {} } = this.props;
+
 		return (
 			<div className="card">
 				<div className="card-header">{user.name}</div>
@@ -14,9 +12,12 @@ export default class ProfileCard extends Component {
 					<img src={user.avatarURL} alt="prof"></img>
 				</div>
 				<div className="card-details">
-					<div>Would you rather</div>
-					<p>{question.optionOne.text}</p>
-					<p>{question.optionTwo.text}</p>
+					<h3>Would You Rather</h3>
+					<p>...{optionOne.text.substr(0, 15)}...</p>
+
+					<div className="card-details-footer">
+						<Link className="active" to={id}>View Poll</Link>
+					</div>
 				</div>
 			</div>
 		)

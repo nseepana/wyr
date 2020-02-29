@@ -2,7 +2,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    font-size: medium;
+    font-size: meium;
     color: #555;
 }
 
@@ -11,9 +11,21 @@ footer {
     flex: 1 100%;
 }
 
+.active {
+    // background-color: #1565C0;
+    background-color: #607d8b;
+    color: white;
+    text-decoration: none;
+}
+
 ul li {
     list-style-type: none;
     margin: 1em;
+}
+
+li.brand {
+    font-size: x-large;
+    flex: auto;
 }
 
 .navigation {
@@ -21,7 +33,7 @@ ul li {
     flex-flow: row wrap;
     justify-content: flex-end;
     margin: 0;
-    border-bottom: 2px solid #d0d0d0;
+    border-bottom: 1px solid lightgray;
 }
 
 nav a {
@@ -48,11 +60,6 @@ main {
     margin-top: 1rem;
 }
 
-fieldset {
-    border: 1px solid #d0d0d0;
-    font-size: large;
-}
-
 hr {
     border: 1px solid #d0d0d0;
 }
@@ -74,4 +81,125 @@ body {
 img {
     max-width: 100px;
     height: auto;
+    text-align: center;
+}
+
+.card {
+    margin: 1rem 0rem;
+}
+
+p {
+    text-align: left;
+}
+
+p.brand {
+    text-align: center;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+*:focus {
+    outline: 1px dashed #607d8b;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+}
+
+.login-footer {
+    margin: 1rem 0rem;
+    // width: 100%;
+}
+
+.login-footer>button {
+    width: 100%;
+}
+
+.login-group {
+    padding: 1rem;
+}
+
+fieldset {
+    font-size: large;
+    border: none;
+    padding: 0;
+}
+
+legend {
+    padding: 10px 0;
+}
+
+.field-radiobutton label {
+    padding: 0;
+    background: 0 0;
+    border: none;
+}
+
+.filter form {
+    position: relative;
+}
+
+.field-radiobutton label {
+    // margin-bottom: 6px;
+    padding: 6px 12px;
+    // display: block;
+}
+
+.field-radiobutton input {
+    margin: 10px;
+    transform: scale(1.4);
+}
+
+.vote-info {
+    // margin: 6px 1rem;
+    font-size: smaller;
+    font-weight: 500;
+    color: #9E9E9E;
+}
+
+.title {
+    font-size: larger;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.hint-container {
+    position: relative;
+    // display: inline-block;
+}
+
+.hint-item {
+    position: absolute;
+    top: 5px;
+    text-align: center;
+    transform: scale(2);
+    color: red;
+    left: -14px;
+}
+
+.active-link {
+    color: #2196f3;
+    text-decoration: none;
+}
+
+a {
+    display: inline-block;
+}
+
+input[type="radio"]:after {
+    background-color: #d1d3d1;
+}
+
+input[type='radio']:checked:after {
+    background-color: #ffa500;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,4 +1,4 @@
-import { getUsers, getQuestions } from '../../utils/api';
+import { getUsers, getQuestions, saveQuestion, saveQuestionAnswer } from '../../utils/api';
 
 export const fetchUsers = () => next => {
 	return getUsers().then(users => {
@@ -21,6 +21,31 @@ export const fetchQuestions = () => next => {
 		})
 	})
 }
+
+export const addQuestion = (question) => next => {
+	return saveQuestion(question).then(data => {
+		next({
+			type: 'ADD_QUESTION',
+			payload: {
+				question: data
+			}
+		})
+	})
+}
+// { authedUser, qid, answer }
+
+export const updateQuestion = (data) => (next) => {
+	return saveQuestionAnswer(data).then((response) => {
+		next({
+			type: 'UPDATE_QUESTION',
+			payload: response
+		})
+		return response;
+	})
+}
+
+
+
 
 export const onUserSelect = (user = {}) => ({
 	type: 'USER_SELECTED',

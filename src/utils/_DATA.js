@@ -2,19 +2,19 @@ let users = {
   naresh: {
     id: 'naresh',
     name: 'Naresh S',
-    avatarURL: '../assets/images/naresh.jpg',
+    avatarURL: '/assets/images/naresh.jpg',
     answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionOne',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo'
+      '8xf0y6ziyjabvozdd253nd': "optionOne",
+      '6ni6ok3ym7mf1p33lnez': "optionTwo",
+      "am8ehyc8byjqgar0jgpub9": "optionTwo",
+      "loxhs1bqm25b708cmbf3g": "optionTwo"
     },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9', '5oh9rungfp3wqy9bag6bnh']
   },
   tyler: {
     id: 'tyler',
     name: 'Tyler McGinnis',
-    avatarURL: '../assets/images/tyler.jpg',
+    avatarURL: '/assets/images/tyler.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -28,11 +28,14 @@ let users = {
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
-      "6ni6ok3ym7mf1p33lnez": 'optionOne'
+      "6ni6ok3ym7mf1p33lnez": 'optionTwo'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
   }
 }
+
+
+
 
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
@@ -48,6 +51,7 @@ let questions = {
       text: 'have horrible long term memory'
     }
   },
+
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
     author: 'ryan',
@@ -61,6 +65,7 @@ let questions = {
       text: 'become a supervillian'
     }
   },
+
   "am8ehyc8byjqgar0jgpub9": {
     id: 'am8ehyc8byjqgar0jgpub9',
     author: 'naresh',
@@ -87,6 +92,7 @@ let questions = {
       text: 'be a back-end developer'
     }
   },
+
   "vthrdm985a262al8qx3do": {
     id: 'vthrdm985a262al8qx3do',
     author: 'tyler',
@@ -113,6 +119,20 @@ let questions = {
       text: 'write Swift'
     }
   },
+
+  '5oh9rungfp3wqy9bag6bnh': {
+    id: '5oh9rungfp3wqy9bag6bnh',
+    timestamp: 1582483712811,
+    author: 'naresh',
+    optionOne: {
+      votes: [],
+      text: 'like frontend'
+    },
+    optionTwo: {
+      votes: [],
+      text: 'like backend'
+    }
+  }
 }
 
 function generateUID() {
@@ -197,26 +217,18 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           }
         }
       }
-
-      res()
+      res({ user: users[authedUser], question: questions[qid] });
+      // res();
     }, 500)
   })
 }
 
-// function generateUserId(user) {
-//   if (user.firstName && user.lastName) {
-//     let userId = (user.firstName + user.lastName).toLowerCase();
-//     return userId;
-//   } else {
-//     throw new Error('user firstname and lastname required.')
-//   }
-// }
-
-export function _fakelogin(userId) {
-  let hasUser = !!users[userId];
+export function _getQuestion(qid) {
   return new Promise((res, rej) => {
-
-    setTimeout(() => res({ hasUser }), 500)
+    setTimeout(() => {
+      const question = questions[qid];
+      res(question);
+    }, 500)
   })
 }
 

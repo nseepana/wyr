@@ -1,8 +1,22 @@
-button {
+button,
+a,
+.navprofile {
     padding: 0.6em;
     height: auto;
-    background-color: whitesmoke;
     font-size: medium;
+    margin: 1px;
+    border: none;
+    border-radius: 2px;
+    color: black;
+}
+
+button {
+    background-color: whitesmoke;
+}
+
+button:disabled {
+    color: #a5a5a5;
+    background-color: whitesmoke;
 }
 
 select {
@@ -24,4 +38,14 @@ p {
 
 label {
     color: gray;
+}
+
+.pgb-border {
+    background-color: #cfd8dc;
+    margin: 0px 20px 0px 0px;
+}
+
+.pgb-status {
+    height: 10px;
+    background-color: #607d8b !important;
 }

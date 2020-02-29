@@ -1,21 +1,32 @@
 import React, { Component } from 'react'
 
-export default class NewQuestions extends Component {
+class NewQuestions extends Component {
+
+	handleNewQuestion = (e) => {
+		e.preventDefault();
+		const { optionOne, optionTwo } = e.target;
+		this.props.addQuestion({
+			optionOneText: optionOne.value,
+			optionTwoText: optionTwo.value,
+			author: this.props.userId
+		});
+
+	}
+
 	render() {
 		return (
 			<div>
-				<p>Complete the question</p>
-				<form className="form">
+				<form className="form border" onSubmit={this.handleNewQuestion}>
 					<fieldset>
-						<legend>Create new question:</legend>
-						<p>Would you rather ...</p>
+						<legend>Would you rather...</legend>
+
 						<label htmlFor="quetion">Option one:</label>
-						<input type="text" />
-						<p>OR</p>
+						<input type="text" name="optionOne" />
+						<div className="center">OR</div>
 						<label htmlFor="quetion">Option two:</label>
-						<input type="text" />
+						<input type="text" name="optionTwo" />
 						<div className="form-footer">
-							<button type="submit">Submit</button>
+							<button type="submit" className="active">Submit</button>
 						</div>
 					</fieldset>
 				</form>
@@ -23,3 +34,5 @@ export default class NewQuestions extends Component {
 		)
 	}
 }
+
+export default NewQuestions;
