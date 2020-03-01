@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
-// import { navigate } from '@reach/router';
+// import { createMemorySource } from '@reach/router';
 // import { getUsers } from '../../utils/api';
 
+// let his = createMemorySource('/login');
 export default class Login extends Component {
 	state = {
-		userId: ""
+		userId: "",
+		redirectTo: "/dashboard"
 	}
 
 	componentDidMount() {
-
-
+		// if(isRedirect)
+		if (this.props) {
+			console.log(this.props.location.state);
+			if (this.props.location.state.redirectedFrom) {
+				this.setState({ 'redirectTo': this.props.location.state.redirectedFrom });
+			}
+		}
 
 	}
 
@@ -22,7 +29,7 @@ export default class Login extends Component {
 		let { userId } = this.state;
 		if (userId) {
 			this.props.onUserSelect(this.props.users[userId]);
-			this.props.navigate(`/dashboard`);
+			this.props.navigate(this.state.redirectTo);
 		}
 	}
 

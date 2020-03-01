@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
-import './App.scss';
-import './component.scss';
-import './card.scss';
-
-
 import { Router, navigate, Redirect } from "@reach/router";
 import MainNav from './components/dashboard/MainNav';
 import LoginContainer from './containers/LoginContainer';
 import { connect } from 'react-redux';
 import DashboardContainer from './containers/DashboardContainer';
 import NewQuestionContainer from './containers/NewQuestionContainer';
-
-
 import LeadBoardContainer from './containers/LeadBoardContainer';
 import QuestionsContainer from './containers/QuestionsContainer';
 import ViewQuestionContainer from './containers/ViewQuestionContainer';
+import PageNotForund from './components/PageNotForund';
 
 
 class App extends Component {
@@ -40,14 +34,16 @@ class App extends Component {
         <main className="main">
 
           <Router>
-            <LoginContainer default path="login" />
+            <LoginContainer path="login" />
             <DashboardContainer path="dashboard">
-              <Redirect from="/" to="home" default noThrow></Redirect>
+              <Redirect from="/" to="home" noThrow></Redirect>
               <QuestionsContainer path="home"></QuestionsContainer>
               <ViewQuestionContainer path="home/:questionId" />
               <NewQuestionContainer path="newquestion" />
               <LeadBoardContainer path="leadboard" />
+              <PageNotForund default></PageNotForund>
             </DashboardContainer>
+            <PageNotForund default></PageNotForund>
           </Router>
 
         </main>

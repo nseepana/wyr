@@ -19,6 +19,7 @@ export default class ErrorBoundary extends Component {
 
 	render() {
 		if (this.state.hasError) {
+			console.log(this.state);
 			// You can render any custom fallback UI
 			return <h1>Something went wrong.</h1>;
 		}

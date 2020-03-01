@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from '@reach/router'
+import { Link, navigate, Redirect } from '@reach/router'
 
 const QuestionCard = (props) => {
 	// const [answer, setAnswered] = useState("");
@@ -49,10 +49,26 @@ const QuestionCard = (props) => {
 	)
 }
 
-const PollResults = (props) => {
+const PollProgress = ({ answered, optionText, percentage = null, votesForOption, totalVotes }) => {
+
+	return (<div className="hint-container">
+		{(answered) ? (<div className="hint-item">*</div>) : ""}
+		<div>{optionText}</div>
+		<progress max='100' min={percentage} value={percentage}>
+			<div className="votes-progress-bar">
+				<span style={{ width: `${percentage}%` }}>{percentage}%</span>
+			</div>
+		</progress>
+		<div className="vote-info">{`${votesForOption} out of ${totalVotes} vote(s)`}</div>
+	</div>)
+};
+
+const Results = (props) => {
 	const { question: { optionOne = {}, optionTwo = {} } = {}, user = {}, answered } = props;
-	const votesForOptionOne = optionOne.votes.length || 0;
-	const votesForOptionTwo = optionTwo.votes.length || 0;
+	const { votes: optionOneVotes = [] } = optionOne;
+	const { votes: optionTwoVotes = [] } = optionTwo;
+	const votesForOptionOne = optionOneVotes.length || 0;
+	const votesForOptionTwo = optionTwoVotes.length || 0;
 	const totalVotes = votesForOptionOne + votesForOptionTwo;
 	const optionOnePercentage = (votesForOptionOne / totalVotes) * 100;
 	const optionTwoPercentage = (votesForOptionTwo / totalVotes) * 100;
@@ -64,23 +80,21 @@ const PollResults = (props) => {
 			</div>
 			<div className="card-details">
 				<h3>Results: </h3>
-				<div className="hint-container">
-					{(answered === "optionOne") ? (<div className="hint-item">*</div>) : ""}
-					<p>Would You Rather {optionOne.text}</p>
-					<div className="pgb-border">
-						<div className="pgb-status" style={{ width: `${optionOnePercentage}%` }} />
-					</div>
-					<div className="vote-info">{`${votesForOptionOne} out of ${totalVotes} vote(s)`}</div>
-				</div>
+				<div>Would You Rather</div>
+				<PollProgress
+					answered={answered === 'optionOne'}
+					optionText={optionOne.text}
+					percentage={optionOnePercentage || 0}
+					votesForOption={votesForOptionOne}
+					totalVotes={totalVotes} />
+				<div>OR</div>
+				<PollProgress
+					answered={answered === 'optionTwo'}
+					optionText={optionTwo.text}
+					percentage={optionTwoPercentage || 0}
+					votesForOption={votesForOptionTwo}
+					totalVotes={totalVotes} />
 
-				<div className="hint-container">
-					{(answered === "optionTwo") ? (<div className="hint-item">*</div>) : ""}
-					<p>Would You Rather {optionTwo.text}</p>
-					<div className="pgb-border">
-						<div className="pgb-status" style={{ width: `${optionTwoPercentage}%` }} />
-					</div>
-					<div className="vote-info">{`${votesForOptionTwo} out of ${totalVotes} vote(s)`}</div>
-				</div>
 			</div>
 		</div>
 	)
@@ -89,32 +103,38 @@ const PollResults = (props) => {
 class ViewQuestion extends Component {
 
 	state = {
-		questionAnswered: '',
+		answered: '',
 		answeredData: {}
 	}
 
 	componentDidMount() {
-		this.setState({ questionAnswered: this.props.answered });
+		this.setState({ answered: this.props.answered });
 	}
 
 	notify = (response) => {
 		const { user, question } = response;
 		const qId = question.id;
-		const questionAnswered = user.answers[qId];
-		this.setState({ questionAnswered, answeredData: question });
+		const answered = user.answers[qId];
+		this.setState({ answered });
 	}
 
 
 	render() {
-		const { questionAnswered } = this.state;
-		const { question, selectedUserId } = this.props;
+		const { answered } = this.state;
+		const { question, selectedUserId, pending = true, invalid, answered: updatedAnswer } = this.props;
+		if (pending) {
+			return 'finding...';
+		} else if (invalid) {
+			return <Redirect from="/" to="404" noThrow></Redirect>;
+		}
+		let hasPollResults = answered || updatedAnswer;
 		return (
 			<div>
-				{(!questionAnswered) ?
+				{(!hasPollResults) ?
 					(<QuestionCard {...this.props} notify={this.notify}></QuestionCard>)
 					:
-					(<PollResults selectedUserId={selectedUserId} question={question} user={this.props.user} answered={questionAnswered}></PollResults>)}
-				<Link className="active-link" to='../' state={{ 'answered': !!questionAnswered }}> &lt; back</Link>
+					(<Results selectedUserId={selectedUserId} question={question} user={this.props.user} answered={answered}></Results>)}
+				<Link className="active-link" to='../' state={{ 'answered': !!answered }}> &lt; back</Link>
 			</div>
 		)
 	}

@@ -1,13 +1,301 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    font-size: meium;
+    color: #555;
+}
+
+.header,
+footer {
+    flex: 1 100%;
+}
+
+.active {
+    background-color: #607d8b;
+    color: white;
+    text-decoration: none;
+}
+
+ul li {
+    list-style-type: none;
+    margin: 1em;
+}
+
+li.brand {
+    font-size: x-large;
+    flex: auto;
+}
+
+.navigation {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    margin: 0;
+    border-bottom: 1px solid lightgray;
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.form-footer {
+    margin: 1rem 0rem 0rem 0rem;
+}
+
+.brand {
+    font-size: x-large;
+    justify-content: center;
+}
+
+main {
+    margin-top: 1rem;
+}
+
+hr {
+    border: 1px solid #d0d0d0;
+}
+
+@media all and (min-width: 600px) {}
+
+@media all and (min-width: 800px) {}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+img {
+    max-width: 100px;
+    height: auto;
+    text-align: center;
+}
+
+.card {
+    margin: 1rem 0rem;
+}
+
+p {
+    text-align: left;
+}
+
+p.brand {
+    text-align: center;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+*:focus {
+    outline: 1px dashed #607d8b;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+}
+
+.login-footer {
+    margin: 1rem 0rem;
+}
+
+.login-footer>button {
+    width: 100%;
+}
+
+.login-group {
+    padding: 1rem;
+}
+
+fieldset {
+    font-size: large;
+    border: none;
+    padding: 0;
+}
+
+legend {
+    padding: 10px 0;
+}
+
+.field-radiobutton label {
+    padding: 0;
+    background: 0 0;
+    border: none;
+}
+
+.filter form {
+    position: relative;
+}
+
+.field-radiobutton label {
+    padding: 6px 12px;
+}
+
+.field-radiobutton input {
+    margin: 10px;
+    transform: scale(1.4);
+}
+
+.vote-info {
+    font-size: smaller;
+    font-weight: 500;
+    color: #9E9E9E;
+}
+
+.title {
+    font-size: larger;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.hint-container {
+    position: relative;
+    margin: 20px 0;
+}
+
+.hint-item {
+    position: absolute;
+    top: 5px;
+    text-align: center;
+    transform: scale(2);
+    color: red;
+    left: -14px;
+}
+
+.active-link {
+    color: #2196f3;
+    text-decoration: none;
+}
+
+a {
+    display: inline-block;
+}
+
+input[type="radio"]:after {
+    background-color: #d1d3d1;
+}
+
+input[type='radio']:checked:after {
+    background-color: #ffa500;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    border: 1px solid lightgray;
+    min-width: 400px;
+    padding: 0 0 20px;
+}
+
+.card-profile {
+    flex-basis: 30%;
+    text-align: center;
+    margin: auto;
+}
+
+.card-details {
+    flex-basis: 70%;
+    padding-left: 1rem;
+}
+
+.card-header {
+    flex-basis: 100%;
+    text-align: left;
+    border-bottom: 1px solid lightgray;
+    padding: 1rem;
+}
+
+p {
+    text-align: left;
+}
+
+.card-details-footer {}
+
+.border {
+    border: 1px solid lightgray;
+    padding: 1rem;
+}
+
+button,
+a,
+.navprofile {
+    padding: 0.6em;
+    height: auto;
+    font-size: medium;
+    margin: 1px;
+    border: none;
+    border-radius: 2px;
+    color: black;
+}
+
+button {
+    background-color: whitesmoke;
+}
+
+button:disabled {
+    color: #a5a5a5;
+    background-color: whitesmoke;
+}
+
+select {
+    padding: 1em;
+    font-size: medium;
+}
+
+input[type='text'] {
+    width: 100%;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    font-size: medium;
+    margin-top: 4px;
+}
+
+label {
+    color: gray;
+}
+
+.pgb-border {
+    background-color: #cfd8dc;
+    margin: 0px 20px 0px 0px;
+}
+
+.pgb-status {
+    height: 10px;
+    background-color: #607d8b !important;
+}
+
+progress {
+    width: 80%;
 }

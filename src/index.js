@@ -7,7 +7,7 @@ import rootReducer from './redux/reducers'
 import { Provider } from 'react-redux';
 import ErrorBoundary from './ErrorBoundary';
 import ReduxThunk from 'redux-thunk';
-import { fetchUsers } from './redux/actionCreators/userActionThunk';
+import { fetchUsers } from './redux/actionCreators/actionThunks';
 
 const composeEnhancers =
 	typeof window === 'object' &&

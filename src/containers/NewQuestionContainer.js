@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addQuestion } from '../redux/actionCreators/userActionThunk'
+import { addQuestion } from '../redux/actionCreators/actionThunks'
 import NewQuestions from '../components/dashboard/NewQuestions'
 import { bindActionCreators } from 'redux'
 

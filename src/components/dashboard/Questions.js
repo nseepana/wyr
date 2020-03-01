@@ -10,7 +10,7 @@ const ShowQuestion = (props) => {
 			<img src={user.avatarURL} alt="prof"></img>
 		</div>
 		<div className="card-details">
-			<h3>Would You Rather</h3>
+			<strong>Would You Rather</strong>
 			<p>{optionOne.text.substr(0, 20)}...</p>
 
 			<div className="card-details-footer">
@@ -26,13 +26,13 @@ class Questions extends Component {
 		view: 'unanswered'
 	}
 	componentDidMount() {
-		const { fetchQuestions, location } = this.props;
+		const { location } = this.props;
 		if (location.state.answered) {
 			this.setState({ view: 'answered' })
 		} else {
 			this.setState({ view: 'unanswered' })
 		}
-		fetchQuestions();
+
 	}
 
 	static getDerivedStateFromProps(props, state) {
@@ -65,9 +65,13 @@ class Questions extends Component {
 	}
 
 	render() {
-		const { questions = [], users = {} } = this.props;
+		const { props = {} } = this;
+		const { pending = true } = props;
+		if (pending) {
+			return <div>loading...</div>
+		}
+		const { questions = [], users = {} } = props;
 		const { selectedQuestions, view } = this.state;
-
 		const unanswered = (view === 'unanswered') ? 'active' : '';
 		const answered = (view === 'answered') ? 'active' : '';
 
@@ -78,11 +82,11 @@ class Questions extends Component {
 					<button className={answered} onClick={this.onSelect('answered')}>Answered questions</button>
 				</div>
 				<div className="card-group">
-					{selectedQuestions.length ?
+					{!pending && selectedQuestions.length ?
 						selectedQuestions.map(({ questionId, answered }) => {
 							const question = questions[questionId] || {};
 							return <ShowQuestion answered={answered} key={question.id} question={question} user={users[question.author]}></ShowQuestion>
-						}) : <p>loading...</p>}
+						}) : <p>Answered all questions.</p>}
 				</div>
 			</React.Fragment>
 		)

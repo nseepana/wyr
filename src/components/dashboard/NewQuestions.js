@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { navigate } from '@reach/router';
 
 class NewQuestions extends Component {
 
@@ -9,8 +10,9 @@ class NewQuestions extends Component {
 			optionOneText: optionOne.value,
 			optionTwoText: optionTwo.value,
 			author: this.props.userId
+		}).then(() => {
+			navigate("home");
 		});
-
 	}
 
 	render() {

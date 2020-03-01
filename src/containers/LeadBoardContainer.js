@@ -14,13 +14,11 @@ const mapStateToProps = ({ auth }) => {
 		scoreBoard.push(scored + userId);
 		leaderBoard[scored + userId] = { ...user, answered, questioned, scored };
 	}
-	scoreBoard.sort().reverse();
+	scoreBoard = scoreBoard.sort().reverse();
 	return { scoreBoard, leaderBoard };
 
 };
 
-const mapDispatchToProps = {
 
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeadBoard)
+export default connect(mapStateToProps)(LeadBoard)

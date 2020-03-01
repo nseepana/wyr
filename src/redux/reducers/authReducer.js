@@ -1,9 +1,11 @@
-const initialState = {}
+const initialState = {};
 
-export const auth = (state = initialState, { type, payload }) => {
+
+export const auth = (state = initialState, { type, payload, pending = true }) => {
+	state.pending = pending;
 	switch (type) {
 		case 'USER_SELECTED':
-			return { ...state, ...payload }
+			return { ...state, ...payload };
 		case 'GET_USERS':
 			return {
 				...state,
@@ -25,6 +27,7 @@ export const auth = (state = initialState, { type, payload }) => {
 			return state;
 
 		default:
+			state.pending = false;
 			return state
 	}
 }
