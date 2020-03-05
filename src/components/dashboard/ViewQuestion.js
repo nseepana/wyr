@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, navigate, Redirect } from '@reach/router'
+import { Link, Redirect } from '@reach/router'
 
 const QuestionCard = (props) => {
 	// const [answer, setAnswered] = useState("");

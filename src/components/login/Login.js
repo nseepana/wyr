@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-// import { createMemorySource } from '@reach/router';
-// import { getUsers } from '../../utils/api';
 
-// let his = createMemorySource('/login');
 export default class Login extends Component {
 	state = {
 		userId: "",
@@ -10,9 +7,7 @@ export default class Login extends Component {
 	}
 
 	componentDidMount() {
-		// if(isRedirect)
 		if (this.props) {
-			console.log(this.props.location.state);
 			if (this.props.location.state.redirectedFrom) {
 				this.setState({ 'redirectTo': this.props.location.state.redirectedFrom });
 			}
@@ -41,7 +36,10 @@ export default class Login extends Component {
 			<div className="login-container">
 				<form className="pure-form pure-form-stacked" onSubmit={this.handleLogin}>
 					<fieldset>
-						<legend>Welcome, Signin to continue.</legend>
+						<legend>
+							<div><h1>Would You Rather</h1>
+								<div className="center">Welcome, Signin to continue.</div></div>
+						</legend>
 						<div className="login-group">
 							<div>{userId ? (<img alt="selected user" src={selectedUser.avatarURL} />) : ('')}</div>
 							<select className="" value={userId} onChange={this.handleChange}>

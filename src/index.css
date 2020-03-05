@@ -44,12 +44,22 @@ li.brand {
     justify-content: flex-end;
     margin: 0;
     border-bottom: 1px solid lightgray;
+    /* background-color: #263238; */
+    /* box-shadow: 0 0px 10px 0 #CFD8DC */
 }
 
 nav a {
     display: block;
     text-decoration: none;
     text-align: center;
+    color: gray;
+}
+
+nav a.active-link {
+    font-weight: 400;
+    color: #37474F;
+    text-decoration: underline;
+    background-color: #cfd8dc05;
 }
 
 .row {
@@ -67,7 +77,8 @@ nav a {
 }
 
 main {
-    margin-top: 1rem;
+    padding-top: 1rem;
+    height: 96vh;
 }
 
 hr {
@@ -130,6 +141,8 @@ p.brand {
 
 .login-group {
     padding: 1rem;
+    margin: auto;
+    text-align: center;
 }
 
 fieldset {
@@ -208,6 +221,8 @@ input[type='radio']:checked:after {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid lightgray;
+    padding: 1rem;
 }
 
 .card {
@@ -227,7 +242,7 @@ input[type='radio']:checked:after {
 
 .card-details {
     flex-basis: 70%;
-    padding-left: 1rem;
+    padding: 1rem;
 }
 
 .card-header {
@@ -257,8 +272,10 @@ a,
     margin: 1px;
     border: none;
     border-radius: 2px;
-    color: black;
+    /* color: black; */
 }
+
+.navigation {}
 
 button {
     background-color: whitesmoke;

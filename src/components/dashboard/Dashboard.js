@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-
-
 class Dashboard extends Component {
-
 	constructor(props) {
 		super(props);
 		props.fetchQuestions();
@@ -11,7 +8,6 @@ class Dashboard extends Component {
 
 	render() {
 		const { children } = this.props;
-
 		return (
 			<React.Fragment>
 				{children}

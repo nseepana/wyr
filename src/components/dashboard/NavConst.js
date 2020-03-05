@@ -1,7 +1,7 @@
 export const Nav = {
 	HOME: 'home',
 	LEAD_BOARD: 'leadboard',
-	NEW_QUESTION: 'newQuestion',
+	NEW_QUESTION: 'add',
 	LOGOUT: 'logout',
 	LOGIN: 'login'
 }

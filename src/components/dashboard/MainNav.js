@@ -3,16 +3,18 @@ import i18n from '../i18n';
 import React from 'react';
 import { connect } from "react-redux";
 
-// import { createHistory, LocationProvider } from "@reach/router";
-
-// let history = createHistory(window);
-
+const NavLink = props => (
+	<Link {...props} getProps={({ isCurrent }) => {
+		return {
+			className: (isCurrent) ? 'active-link' : ''
+		}
+	}}></Link>
+)
 
 const MainNav = (props) => {
 	const match = useMatch('/');
 	if (!props.hasUserId) {
-		let pathstate = ""
-
+		let pathstate = "";
 		if (!match) {
 			pathstate = { state: { redirectedFrom: props.location.pathname } };
 			navigate('/login', pathstate);
@@ -28,26 +30,24 @@ const MainNav = (props) => {
 				<li className="brand">Would You Rather</li>
 				<li>
 					{/* relative url */}
-					<Link to='home' >{i18n.t('home')}</Link>
+					<NavLink to='home' >{i18n.t('home')}</NavLink>
 				</li>
 				<li>
 					{/* relative url */}
-					<Link to='newquestion'>{i18n.t('newquestion')}</Link>
+					<NavLink to='add'>{i18n.t('newquestion')}</NavLink>
 				</li>
 				<li>
 					{/* absolute url */}
-					{/* <Link  to='/leadboard'>{i18n.t('leaderboard')}</Link> */}
+					{/* <NavLink  to='/leadboard'>{i18n.t('leaderboard')}</NavLink> */}
 					{/* relative url */}
-					<Link to='leadboard'>{i18n.t('leaderboard')}</Link>
+					<NavLink to='leadboard'>{i18n.t('leaderboard')}</NavLink>
 				</li>
 
 				<li><div className="navprofile">Hi, {props.name}!</div></li>
-				<li><Link to="/login">Logout</Link></li>
+				<li><NavLink to="/login">Logout</NavLink></li>
 			</ul>
 		)
 	}
-
-
 }
 
 export default connect((state) => {

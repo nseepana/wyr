@@ -32,24 +32,20 @@ class App extends Component {
           </nav>
         </header>
         <main className="main">
-
           <Router>
             <LoginContainer path="login" />
             <DashboardContainer path="dashboard">
               <Redirect from="/" to="home" noThrow></Redirect>
               <QuestionsContainer path="home"></QuestionsContainer>
               <ViewQuestionContainer path="home/:questionId" />
-              <NewQuestionContainer path="newquestion" />
+              <NewQuestionContainer path="add" />
               <LeadBoardContainer path="leadboard" />
               <PageNotForund default></PageNotForund>
             </DashboardContainer>
             <PageNotForund default></PageNotForund>
           </Router>
-
         </main>
-        {/* <footer className="footer">
-        Naresh
-      </footer> */}
+
       </div>
     )
   }
